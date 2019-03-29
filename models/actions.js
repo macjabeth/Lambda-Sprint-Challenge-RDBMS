@@ -9,9 +9,10 @@ module.exports = {
     const actions = await query;
 
     for (const action of actions) {
-      action.contexts = await db({ c: 'contexts', ac: 'action_context', a: 'actions' })
-        .where('a.id', 'ac.action_id').andWhere('c.id', 'ac.context_id')
-          .andWhere('a.id', action.id)
+      action.contexts = await db('contexts as c')
+        .join('action_context as ac', 'c.id', 'ac.context_id')
+        .join('actions as a', 'a.id', 'ac.action_id')
+        .where('a.id', action.id)
         .select({ id: 'c.id', description: 'c.description' });
     }
 

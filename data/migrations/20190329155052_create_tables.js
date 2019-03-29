@@ -23,6 +23,7 @@ exports.up = function(knex, Promise) {
     .createTable('action_context', (table) => {
       table.integer('action_id').unsigned().references('actions.id');
       table.integer('context_id').unsigned().references('contexts.id');
+      table.primary(['action_id', 'context_id']);
     });
 };
 
