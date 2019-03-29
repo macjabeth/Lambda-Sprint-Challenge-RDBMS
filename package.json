@@ -1,0 +1,36 @@
+{
+  "name": "Lambda-Sprint-Challenge-RDBMS",
+  "version": "1.0.0",
+  "description": "This challenge allows you to practice the concepts and techniques learned over the past Sprint and apply them in a concrete project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macjabeth/Lambda-Sprint-Challenge-RDBMS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/macjabeth/Lambda-Sprint-Challenge-RDBMS/issues"
+  },
+  "homepage": "https://github.com/macjabeth/Lambda-Sprint-Challenge-RDBMS#readme",
+  "devDependencies": {
+    "knex-cleaner": "^1.1.4",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "config": "^3.0.1",
+    "debug": "^4.1.1",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "joi": "^14.3.1",
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6"
+  }
+}
