@@ -14,7 +14,7 @@ module.exports = {
         .select('id', 'description', 'notes', 'completed');
     }
 
-    return query;
+    return projects;
   },
   add: (project) => db('projects').insert(project),
   update: (id, changes) => db('projects').where({ id }).update(changes),

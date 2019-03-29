@@ -5,9 +5,8 @@ const actionDB = require('../models/actions');
 
 // Validation
 const schema = Joi.object().keys({
-  name: Joi.string().required(),
-  project_id: Joi.number().integer().required(),
   description: Joi.string().required(),
+  project_id: Joi.number().integer().required(),
   notes: Joi.string(),
   completed: Joi.boolean()
 });
