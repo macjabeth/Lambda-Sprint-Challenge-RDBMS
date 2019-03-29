@@ -11,6 +11,7 @@ module.exports = {
     for (const action of actions) {
       action.contexts = await db({ c: 'contexts', ac: 'action_context', a: 'actions' })
         .where('a.id', 'ac.action_id').andWhere('c.id', 'ac.context_id')
+          .andWhere('a.id', action.id)
         .select({ id: 'c.id', description: 'c.description' });
     }
 
