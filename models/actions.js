@@ -2,22 +2,24 @@ const db = require('../data/db');
 const contextDB = require('./contexts');
 
 module.exports = {
-  get: async (id) => {
+  get: async (id, project) => {
     let query = db('actions')
 
-    if (id) query = query.where({ id });
+    if (Boolean(id)) {
+      query = !project
+        ? query.where({ id })
+        : query.where('project_id', id)
+            .select('id', 'description', 'notes', 'completed');
+    }
 
     const actions = await query;
 
     for (const action of actions) {
-      action.contexts = await contextDB.getByAction(action);
+      action.contexts = await contextDB.get(action.id, true);
     }
 
     return actions;
   },
-  getByProject: (project) => db('actions')
-    .where('project_id', project.id)
-    .select('id', 'description', 'notes', 'completed'),
   add: (action) => db('actions').insert(action),
   update: (id, changes) => db('actions').where({ id }).update(changes),
   remove: (id) => db('actions').where({ id }).del()

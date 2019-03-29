@@ -1,6 +1,5 @@
 const db = require('../data/db');
 const actionDB = require('./actions');
-const contextDB = require('./contexts');
 
 module.exports = {
   get: async (id) => {
@@ -11,11 +10,7 @@ module.exports = {
     const projects = await query;
 
     for (const project of projects) {
-      project.actions = await actionDB.getByProject(project);
-
-      for (const action of project.actions) {
-        action.contexts = await contextDB.getByAction(action);
-      }
+      project.actions = await actionDB.get(project.id, true);
     }
 
     return projects;
