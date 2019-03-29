@@ -73,6 +73,12 @@ Project
 Action
   ID  ProjectID[FK]  Description  Notes  Completed
 
+ActionContext
+  ActionID[FK]  ContextID[FK]
+
+Context
+  ID  Description
+
 ## Minimum Viable Product
 
 **NOTE** There is no boilerplate for you for this project. You will need to take the steps necessary for creating this project from scratch. Start by initializing your project with a `package.json` file and go from there.
