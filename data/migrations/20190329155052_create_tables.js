@@ -28,6 +28,8 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return knex.schema
+    .dropTableIfExists('action_context')
+    .dropTableIfExists('contexts')
     .dropTableIfExists('actions')
     .dropTableIfExists('projects')
 };
